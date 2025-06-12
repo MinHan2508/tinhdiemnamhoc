@@ -3,40 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bảng Tính Điểm Năm Học</title>
+    <title>22th2 Bảng Tính Điểm Năm Học</title>
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 40px;
+            margin: 20px;
             background: linear-gradient(to bottom, #e0f7fa, #ffffff);
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #1a237e;
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
         h2 {
             color: #1a237e;
-            font-size: 2.2em;
+            font-size: 1.5em;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
         table {
-            width: 90%;
+            width: 100%;
             max-width: 800px;
             border-collapse: collapse;
             background-color: #fff;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             border-radius: 10px;
             overflow: hidden;
+            margin-bottom: 20px;
         }
         th, td {
-            padding: 15px;
+            padding: 12px;
             text-align: center;
             border: 1px solid #e0e0e0;
+            font-size: 0.9em;
         }
         th:nth-child(3), td:nth-child(3) { /* Cột Số Tín Chỉ */
-            width: 80px;
-            max-width: 80px;
+            width: 60px;
+            max-width: 60px;
         }
         th {
             background: linear-gradient(to bottom, #3f51b5, #1a237e);
@@ -53,11 +63,11 @@
             background-color: #e8f0fe;
         }
         input[type="text"], input[type="number"] {
-            width: 95%;
-            padding: 8px;
+            width: 90%;
+            padding: 6px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 1em;
+            font-size: 0.9em;
             transition: border-color 0.3s;
         }
         input[type="text"]:focus, input[type="number"]:focus {
@@ -65,18 +75,20 @@
             outline: none;
         }
         button {
-            padding: 8px 15px;
+            padding: 8px 12px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 0.9em;
+            font-size: 0.85em;
             transition: background-color 0.3s, transform 0.1s;
         }
         #addSubject, #addSubjectBottom {
             background-color: #4caf50;
             color: white;
-            margin: 15px 0;
-            padding: 10px 20px;
+            margin: 10px 0;
+            padding: 10px 15px;
+            width: 100%;
+            max-width: 200px;
         }
         #addSubject:hover, #addSubjectBottom:hover {
             background-color: #388e3c;
@@ -92,61 +104,64 @@
         }
         #result {
             text-align: center;
-            margin-top: 30px;
-            font-size: 1.8em;
+            margin: 20px 0;
+            font-size: 1.2em;
             font-weight: bold;
             color: #1a237e;
             background-color: #e8f0fe;
-            padding: 15px;
+            padding: 12px;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
         }
         .classification {
-            font-size: 1.4em;
+            font-size: 1em;
             color: #d81b60;
-            margin-top: 10px;
+            margin-top: 5px;
         }
         /* Style cho thông báo khen thưởng */
         .reward-notice {
-            max-width: 600px;
-            margin: 25px 0;
-            padding: 25px;
+            max-width: 100%;
+            margin: 20px 0;
+            padding: 15px;
             border: 1px solid #ddd;
-            border-radius: 12px;
+            border-radius: 10px;
             background-color: #ffffff;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         .reward-notice h2 {
             color: #1a73e8;
-            font-size: 24px;
-            margin: 0 0 15px;
+            font-size: 1.2em;
+            margin: 0 0 10px;
             text-align: center;
         }
         .reward-notice h4 {
             color: #2c3e50;
-            margin: 20px 0 10px;
-            font-size: 18px;
+            margin: 15px 0 5px;
+            font-size: 1em;
         }
         .reward-notice p {
-            margin: 0 0 15px;
-            font-size: 16px;
+            margin: 0 0 10px;
+            font-size: 0.9em;
         }
         .reward-notice ul {
-            margin: 0 0 15px 25px;
+            margin: 0 0 10px 15px;
             padding: 0;
         }
         .reward-notice li {
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            font-size: 0.9em;
         }
         .reward-notice a {
             color: #1a73e8;
             text-decoration: none;
         }
         .reward-notice .deadline {
-            margin: 0 0 30px;
+            margin: 0 0 15px;
             font-weight: bold;
             text-align: center;
-            font-size: 24px;
+            font-size: 1.2em;
             background: linear-gradient(90deg, #e53935, #ffb300);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -154,45 +169,103 @@
         .reward-notice hr {
             border: 0;
             border-top: 1px dotted #1a73e8;
-            margin: 10px 0;
+            margin: 5px 0;
         }
         .reward-notice .button-container {
             text-align: center;
-            margin: 25px 0;
+            margin: 15px 0;
         }
         .reward-notice .button-container a {
             display: inline-block;
             background-color: #1a73e8;
             color: #fff;
-            padding: 14px 28px;
+            padding: 10px 20px;
             text-decoration: none;
             border-radius: 6px;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 0.9em;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .reward-notice .button-container a img {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             vertical-align: middle;
-            margin-right: 8px;
+            margin-right: 6px;
         }
         .reward-notice .footer {
-            font-size: 14px;
+            font-size: 0.8em;
             text-align: center;
-            margin-top: 40px;
+            margin-top: 20px;
             border-top: 1px dashed #ccc;
-            padding-top: 20px;
+            padding-top: 15px;
         }
         .reward-notice .footer p {
             margin: 0 0 5px;
             color: #555;
         }
         .reward-notice .footer hr {
-            margin: 15px auto;
+            margin: 10px auto;
             width: 70%;
             border: 0;
             border-top: 1px dashed #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            body {
+                margin: 10px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            table {
+                font-size: 0.8em;
+            }
+            th, td {
+                padding: 8px;
+            }
+            input[type="text"], input[type="number"] {
+                font-size: 0.8em;
+                padding: 4px;
+            }
+            button {
+                font-size: 0.75em;
+                padding: 6px 10px;
+            }
+            #result {
+                font-size: 1em;
+                padding: 10px;
+            }
+            .classification {
+                font-size: 0.9em;
+            }
+            .reward-notice h2 {
+                font-size: 1em;
+            }
+            .reward-notice h4 {
+                font-size: 0.9em;
+            }
+            .reward-notice p, .reward-notice li {
+                font-size: 0.8em;
+            }
+            .reward-notice .deadline {
+                font-size: 1em;
+            }
+            .reward-notice .button-container a {
+                font-size: 0.8em;
+                padding: 8px 16px;
+            }
+            .reward-notice .button-container a img {
+                width: 16px;
+                height: 16px;
+            }
         }
     </style>
 </head>
@@ -253,9 +326,16 @@
                 <td><input type="number" value="0" min="0" max="10" step="0.1"></td>
                 <td><button class="deleteRow">Xóa</button></td>
             </tr>
+               <tr>
+                <td>7</td>
+                <td><input type="text" value="Bổ sung"></td>
+                <td><input type="number" value="0" min="1" step="1"></td>
+                <td><input type="number" value="0" min="0" max="10" step="0.1"></td>
+                <td><button class="deleteRow">Xóa</button></td>
+            </tr>
         </tbody>
     </table>
-      <button id="addSubjectBottom">Thêm Môn Học</button>
+    <button id="addSubjectBottom">Thêm Môn Học</button>
     <div id="result">
         <div id="averageScore">Điểm Trung Bình Tổng Kết: 0.00</div>
         <div id="classification" class="classification">Xếp Loại: Chưa có</div>
@@ -267,48 +347,48 @@
             <h2>📝 DH22TH2 Thời Hạn Nộp Hồ Sơ Khen Thưởng Năm Học 2024-2025</h2>
         </div>
 
-        <div style="border: 1px solid #ddd; padding: 25px; border-radius: 12px; background-color: #ffffff; margin: 25px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-            <p style="margin: 0 0 10px; font-size: 16px;">Gửi bạn: <strong>{{ $user->full_name ?? 'N/A' }}</strong></p>
-            <p style="margin: 0 0 15px;">Theo <strong>Công văn số 755 ĐHAG-CTSV</strong> từ Phòng Công tác Sinh viên Trường Đại học An Giang, dưới đây là hướng dẫn chi tiết về việc nộp hồ sơ khen thưởng cá nhân và tập thể sinh viên năm học 2024-2025:</p>
+        <div style="border: 1px solid #ddd; padding: 15px; border-radius: 10px; background-color: #ffffff; margin: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            <p style="margin: 0 0 10px; font-size: 0.9em;">Gửi bạn: <strong>{{ $user->full_name ?? 'N/A' }}</strong></p>
+            <p style="margin: 0 0 10px; font-size: 0.9em;">Theo <strong>Công văn số 755 ĐHAG-CTSV</strong> từ Phòng Công tác Sinh viên Trường Đại học An Giang, dưới đây là hướng dẫn chi tiết về việc nộp hồ sơ khen thưởng cá nhân và tập thể sinh viên năm học 2024-2025:</p>
 
             <h4>🔗 Thông tin công văn</h4>
-            <p style="margin: 0 0 15px;">Xem chi tiết tại: <a href="https://sao.agu.edu.vn/article/cong-van-ve-viec-nop-ho-so-khen-thuong-ca-nhan-va-tap-the-sinh-vien-nam-hoc-2024-2025.html" style="color: #1a73e8; text-decoration: none;" target="_blank">Website Phòng CTSV</a></p>
+            <p style="margin: 0 0 10px; font-size: 0.9em;">Xem chi tiết tại: <a href="https://sao.agu.edu.vn/article/cong-van-ve-viec-nop-ho-so-khen-thuong-ca-nhan-va-tap-the-sinh-vien-nam-hoc-2024-2025.html" style="color: #1a73e8; text-decoration: none;" target="_blank">Website Phòng CTSV</a></p>
 
             <h4>📝 Hướng dẫn nộp hồ sơ</h4>
-            <ul style="margin: 0 0 15px 25px; padding: 0;">
-                <li style="margin-bottom: 10px;"><strong>File báo cáo thành tích cá nhân:</strong> Tải về từ công văn, in ra giấy, dán ảnh 4x6. Trên file chèn ảnh trực tiếp vào file và dán chữ ký.</li>
-                <li style="margin-bottom: 10px;"><strong>Cấu trúc thư mục:</strong> Tạo thư mục với tên <code>STT_MSSV_HOTEN</code> (VD: <code>01_DTH215952_NguyenDinhMinhKhang</code>). STT là số thứ tự trong danh sách đề nghị khen thưởng. Link: <a href="https://cictagu-my.sharepoint.com/:w:/g/personal/khang_dth215952_student_agu_edu_vn/ETliL6OGteFIg1qz70G_cV8BdFTvEdP-GqNFoXJl1Q7UNA"><img src="https://cdn-icons-png.flaticon.com/512/888/888883.png" alt="Tài liệu" style="width:20px;height:20px;"></a></li>
-                <li style="margin-bottom: 10px;"><strong>Hồ sơ yêu cầu:</strong>
-                    <ul style="margin: 5px 0 0 25px; padding: 0;">
-                        <li style="margin-bottom: 5px;">1. Báo cáo thành tích cá nhân (file Word/PDF).</li>
-                        <li style="margin-bottom: 5px;">2. Bảng điểm học tập năm học 2024 -2025. (in từ <a href="https://regis.agu.edu.vn" style="color: #1a73e8; text-decoration: none;" target="_blank">regis.agu.edu.vn</a>).</li>
-                        <li style="margin-bottom: 5px;">3. Bảng điểm rèn luyện 2 học kỳ năm học 2024 -2025. (in từ <a href="https://sao.agu.edu.vn" style="color: #1a73e8; text-decoration: none;" target="_blank">sao.agu.edu.vn</a>).</li>
-                        <li style="margin-bottom: 5px;">4. Bản sao các minh chứng thành tích (nếu có).</li>
+            <ul style="margin: 0 0 10px 15px; padding: 0;">
+                <li style="margin-bottom: 5px; font-size: 0.9em;"><strong>File báo cáo thành tích cá nhân:</strong> Tải về từ công văn, in ra giấy, dán ảnh 4x6. Trên file chèn ảnh trực tiếp vào file và dán chữ ký.</li>
+                <li style="margin-bottom: 5px; font-size: 0.9em;"><strong>Cấu trúc thư mục:</strong> Tạo thư mục với tên <code>STT_MSSV_HOTEN</code> (VD: <code>01_DTH215952_NguyenDinhMinhKhang</code>). STT là số thứ tự trong danh sách đề nghị khen thưởng. Link: <a href="https://cictagu-my.sharepoint.com/:w:/g/personal/khang_dth215952_student_agu_edu_vn/ETliL6OGteFIg1qz70G_cV8BdFTvEdP-GqNFoXJl1Q7UNA"><img src="https://cdn-icons-png.flaticon.com/512/888/888883.png" alt="Tài liệu" style="width:18px;height:18px;"></a></li>
+                <li style="margin-bottom: 5px; font-size: 0.9em;"><strong>Hồ sơ yêu cầu:</strong>
+                    <ul style="margin: 5px 0 0 15px; padding: 0;">
+                        <li style="margin-bottom: 3px; font-size: 0.9em;">1. Báo cáo thành tích cá nhân (file Word/PDF).</li>
+                        <li style="margin-bottom: 3px; font-size: 0.9em;">2. Bảng điểm học tập năm học 2024 -2025. (in từ <a href="https://regis.agu.edu.vn" style="color: #1a73e8; text-decoration: none;" target="_blank">regis.agu.edu.vn</a>).</li>
+                        <li style="margin-bottom: 3px; font-size: 0.9em;">3. Bảng điểm rèn luyện 2 học kỳ năm học 2024 -2025. (in từ <a href="https://sao.agu.edu.vn" style="color: #1a73e8; text-decoration: none;" target="_blank">sao.agu.edu.vn</a>).</li>
+                        <li style="margin-bottom: 3px; font-size: 0.9em;">4. Bản sao các minh chứng thành tích (nếu có).</li>
                     </ul>
                 </li>
-                <li style="margin-bottom: 10px;"><strong>Link nộp hồ sơ:</strong> <a href="https://drive.google.com/drive/folders/13IA_CtKqD7nxeh_novbf46XzL_0Zco-x?usp=sharing" style="color: #1a73e8; text-decoration: none;" target="_blank">Google Drive (yêu cầu Gmail AGU)</a>.</li>
-                <li style="margin-bottom: 10px;"><strong>Bảng Tổng Hợp Khen Thưởng:</strong> Điền thông tin để nhận tiền tại <a href="https://cictagu-my.sharepoint.com/:w:/g/personal/khang_dth215952_student_agu_edu_vn/ETliL6OGteFIg1qz70G_cV8BdFTvEdP-GqNFoXJl1Q7UNA" style="color: #1a73e8; text-decoration: none;" target="_blank">📋 Bảng Tổng Hợp Khen Thưởng</a>.</li>
+                <li style="margin-bottom: 5px; font-size: 0.9em;"><strong>Link nộp hồ sơ:</strong> <a href="https://drive.google.com/drive/folders/13IA_CtKqD7nxeh_novbf46XzL_0Zco-x?usp=sharing" style="color: #1a73e8; text-decoration: none;" target="_blank">Google Drive (yêu cầu Gmail AGU)</a>.</li>
+                <li style="margin-bottom: 5px; font-size: 0.9em;"><strong>Bảng Tổng Hợp Khen Thưởng:</strong> Điền thông tin để nhận tiền tại <a href="https://cictagu-my.sharepoint.com/:w:/g/personal/khang_dth215952_student_agu_edu_vn/ETliL6OGteFIg1qz70G_cV8BdFTvEdP-GqNFoXJl1Q7UNA" style="color: #1a73e8; text-decoration: none;" target="_blank">📋 Bảng Tổng Hợp Khen Thưởng</a>.</li>
             </ul>
 
             <h4>⏰ Hạn nộp</h4>
             <p class="deadline">Đến hết Chủ Nhật, ngày 22/06/2025.</p>
-            <p style="margin: 0 0 15px;">Sau thời gian này, sinh viên vui lòng liên hệ khoa để được giải quyết!</p>
+            <p style="margin: 0 0 10px; font-size: 0.9em;">Sau thời gian này, sinh viên vui lòng liên hệ khoa để được giải quyết!</p>
 
             <h4>⚠ Lưu ý quan trọng</h4>
-            <ul style="margin: 0 0 15px 25px; padding: 0;">
-                <li style="margin-bottom: 10px;">Hồ sơ có dán ảnh và chữ ký đầy đủ!</li>
-                <hr style="border: 0; border-top: 1px dotted #1a73e8; margin: 10px 0;">
-                <li style="margin-bottom: 10px;">Hồ sơ giấy chỉ được nhận sau khi nộp đầy đủ trên Google Drive!</li>
-                <hr style="border: 0; border-top: 1px dotted #1a73e8; margin: 10px 0;">
-                <li style="margin-bottom: 10px;">Đảm bảo hồ sơ đầy đủ các tài liệu liệt kê ở trên.</li>
-                <hr style="border: 0; border-top: 1px dotted #1a73e8; margin: 10px 0;">
-                <li style="margin-bottom: 10px;">Kiểm tra kỹ STT, MSSV và tên thư mục để dễ kiểm tra, đối chiếu.</li>
+            <ul style="margin: 0 0 10px 15px; padding: 0;">
+                <li style="margin-bottom: 5px; font-size: 0.9em;">Hồ sơ có dán ảnh và chữ ký đầy đủ!</li>
+                <hr style="border: 0; border-top: 1px dotted #1a73e8; margin: 5px 0;">
+                <li style="margin-bottom: 5px; font-size: 0.9em;">Hồ sơ giấy chỉ được nhận sau khi nộp đầy đủ trên Google Drive!</li>
+                <hr style="border: 0; border-top: 1px dotted #1a73e8; margin: 5px 0;">
+                <li style="margin-bottom: 5px; font-size: 0.9em;">Đảm bảo hồ sơ đầy đủ các tài liệu liệt kê ở trên.</li>
+                <hr style="border: 0; border-top: 1px dotted #1a73e8; margin: 5px 0;">
+                <li style="margin-bottom: 5px; font-size: 0.9em;">Kiểm tra kỹ STT, MSSV và tên thư mục để dễ kiểm tra, đối chiếu.</li>
             </ul>
         </div>
 
         <!-- Trapdoor Button -->
         <div class="button-container">
-            <a href="https://cictagu-my.sharepoint.com/:w:/g/personal/khang_dth215952_student_agu_edu_vn/ETliL6OGteFIg1qz70G_cV8BdFTvEdP-GqNFoXJl1Q7UNA" target="_blank" style="display: inline-block; margin-top: 12px; background-color: #4099FF; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px;">
+            <a href="https://cictagu-my.sharepoint.com/:w:/g/personal/khang_dth215952_student_agu_edu_vn/ETliL6OGteFIg1qz70G_cV8BdFTvEdP-GqNFoXJl1Q7UNA" target="_blank" style="display: inline-block; margin-top: 12px; background-color: #4099FF; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 0.9em;">
                 📋 Điền Bảng Khen Thưởng
             </a>
         </div>
@@ -316,7 +396,7 @@
         <!-- Google Drive Button -->
         <div class="button-container">
             <a href="https://drive.google.com/drive/folders/13IA_CtKqD7nxeh_novbf46XzL_0Zco-x?usp=sharing" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/2702/2702602.png" alt="Drive" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                <img src="https://cdn-icons-png.flaticon.com/512/2702/2702602.png" alt="Drive" style="width: 18px; height: 18px; vertical-align: middle; margin-right: 6px;">
                 Nộp hồ sơ trên Google Drive
             </a>
         </div>
@@ -324,16 +404,13 @@
         <!-- Footer -->
         <div class="footer">
             <p style="margin: 0 0 5px; color: #555;">💬 <em>"Please accept my sincere thanks. If you need any help or have any questions, please let me know."</em></p>
-            <p style="margin: 0 0 15px; color: #555;">📧 Yours faithfully!</p>
+            <p style="margin: 0 0 10px; color: #555;">📧 Yours faithfully!</p>
 
-            <hr style="margin: 15px auto; width: 70%; border: 0; border-top: 1px dashed #ccc;">
+            <hr style="margin: 10px auto; width: 70%; border: 0; border-top: 1px dashed #ccc;">
 
-        
-
-            <hr style="margin: 15px auto; width: 70%; border: 0; border-top: 1px dashed #ccc;">
+            <hr style="margin: 10px auto; width: 70%; border: 0; border-top: 1px dashed #ccc;">
         </div>
     </div>
-
 
     <script>
         let stt = 1;
